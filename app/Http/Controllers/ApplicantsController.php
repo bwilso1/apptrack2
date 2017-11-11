@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Applicant;
+use App\Job;
+use DB;
 
 class ApplicantsController extends Controller
 {
@@ -25,7 +27,8 @@ class ApplicantsController extends Controller
      */
     public function create()
     {
-        return view('applicants.create');
+        $jobs = Job::all();
+        return view('applicants.create')->with('jobs', $jobs);
     }
 
     /**
@@ -64,7 +67,10 @@ class ApplicantsController extends Controller
     public function show($id)
     {
         $applicant = Applicant::find($id);
-        return view('applicants.show')->with('applicant', $applicant);
+        $answers = DB::table('questions')
+        ->leftJoin('answers', 'questions.id', '=', 'answers.q_id')
+        ->where('job_title', $applicant->job_title);
+        return view('applicants.show')->with('applicant', $applicant)->with('answers', $answers);
     }
 
     /**

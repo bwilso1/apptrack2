@@ -46,5 +46,25 @@
 <div align="right">
     <button class="btn btn-primary">Edit</button>
     <button class="btn btn-secondary" onclick="location.href = '/applicants/';">Back</button>
-<div>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#interview">Interview</a></li>
+  <li><a data-toggle="tab" href="#phone">Phone Screen</a></li>
+  <li><a data-toggle="tab" href="#assess">Assessment</a></li>
+</ul>
+<div class="tab-content">
+  <div id="interview" class="tab-pane fade in active">
+    <h2>Interview Questions</h2>
+    <p>The interview questions and answers will be here.</p>
+  </div>
+  <div id="phone" class="tab-pane fade">
+    <h2>Phone Screen Questions</h2>
+    <p>The phone screen questions and answers will be here.</p>
+  </div>
+  <div id="assess" class="tab-pane fade">
+    <h2>Assessment</h2>
+    <p>The assessment of the applicant will be here.</p>
+  </div>
+</div>
 @endsection
