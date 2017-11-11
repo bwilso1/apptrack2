@@ -69,7 +69,7 @@ class ApplicantsController extends Controller
         $applicant = Applicant::find($id);
         $answers = DB::table('questions')
         ->leftJoin('answers', 'questions.id', '=', 'answers.q_id')
-        ->where('job_title', $applicant->job_title);
+        ->where('job_title', '=', $applicant->job_title)->get();
         return view('applicants.show')->with('applicant', $applicant)->with('answers', $answers);
     }
 

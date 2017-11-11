@@ -56,11 +56,21 @@
 <div class="tab-content">
   <div id="interview" class="tab-pane fade in active">
     <h2>Interview Questions</h2>
-    <p>The interview questions and answers will be here.</p>
+    @foreach($answers as $answer)
+      @if(($answer->type) == "Interview")
+        <h4>{{$answer->content}}</h4>
+        <div class="well">{{$answer->response}}</div>
+      @endif
+    @endforeach
   </div>
   <div id="phone" class="tab-pane fade">
     <h2>Phone Screen Questions</h2>
-    <p>The phone screen questions and answers will be here.</p>
+    @foreach($answers as $answer)
+      @if(($answer->type) == "Phone Screen")
+        <h4>{{$answer->content}}</h4>
+        <div class="well">{{$answer->response}}</div>
+      @endif
+    @endforeach
   </div>
   <div id="assess" class="tab-pane fade">
     <h2>Assessment</h2>
