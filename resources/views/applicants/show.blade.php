@@ -44,7 +44,7 @@
    </tr>
 </table>
 <div align="right">
-    <button class="btn btn-primary">Edit</button>
+    <a class="btn btn-primary" href="/applicants/{{$applicant->id}}/edit">Edit</a>
     <button class="btn btn-secondary" onclick="location.href = '/applicants/';">Back</button>
 </div>
 

@@ -81,7 +81,8 @@ class ApplicantsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $applicant = Applicant::find($id);
+        return view('applicants.edit')->with('applicant', $applicant);
     }
 
     /**
@@ -93,7 +94,30 @@ class ApplicantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'source' => 'required',
+            'location' => 'required',
+            'job_title' => 'required'
+        ]);
+
+        $applicant = Applicant::find($id);
+        $applicant->first_name = $request->input('first_name');
+        $applicant->last_name = $request->input('last_name');
+        $applicant->source = $request->input('source');
+        $applicant->location = $request->input('location');
+        $applicant->job_title = $request->input('job_title');
+
+        $applicant->status = $request->input('status');
+        $applicant->salary = $request->input('salary');
+        $applicant->contractor = $request->input('contractor');
+        $applicant->availability = $request->input('availability');
+        $applicant->close = $request->input('close');
+        
+        $applicant->save();
+
+        return redirect('/applicants')->with('success', 'Applicant Successfully Updated');
     }
 
     /**
