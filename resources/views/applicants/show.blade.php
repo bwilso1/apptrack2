@@ -56,6 +56,7 @@
 <div class="tab-content">
   <div id="interview" class="tab-pane fade in active">
     <h2>Interview Questions</h2>
+    <div align="right"><a href="/answers/{{$applicant->id}}/Interview">Advanced Options</a></div>
     @foreach($answers as $answer)
       @if(($answer->type) == "Interview")
         <h4>{{$answer->content}}</h4>
@@ -65,6 +66,7 @@
   </div>
   <div id="phone" class="tab-pane fade">
     <h2>Phone Screen Questions</h2>
+    <div align="right"><a href="/answers/{{$applicant->id}}/Phone Screen">Advanced Options</a></div>
     @foreach($answers as $answer)
       @if(($answer->type) == "Phone Screen")
         <h4>{{$answer->content}}</h4>

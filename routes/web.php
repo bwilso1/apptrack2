@@ -13,6 +13,9 @@
 
 Route::get('/', 'PagesController@index');
 Route::get('/controlpanel', 'PagesController@controlpanel');
+Route::get('/answers/create/{a_id}/{q_id}', 'PagesController@createAnswer');
+Route::get('/answers/edit/{a_id}/{id}', 'PagesController@editAnswer');
+Route::get('/answers/{id}/{type}', 'PagesController@showAnswers');
 
 Route::resource('applicants', 'ApplicantsController');
 Route::resource('questions', 'QuestionsController');

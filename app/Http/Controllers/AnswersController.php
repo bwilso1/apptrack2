@@ -37,7 +37,21 @@ class AnswersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'response' => 'required'
+        ]);
+
+        $answer = new Answer;
+        $answer->q_id = $request->input('q_id');
+        $answer->a_id = $request->input('a_id');
+        $answer->response = $request->input('response');
+        $answer->save();
+
+        $id = $request->input('a_id');
+        $type = $request->input('type');
+        $url = '/answers/'.$id.'/'.$type;
+
+        return redirect($url)->with('success', 'Answer Successfully Added');
     }
 
     /**
@@ -71,7 +85,19 @@ class AnswersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'response' => 'required'
+        ]);
+
+        $answer = Answer::find($id);
+        $answer->response = $request->input('response');
+        $answer->save();
+
+        $a_id = $request->input('a_id');
+        $type = $request->input('type');
+        $url = '/answers/'.$a_id.'/'.$type;
+
+        return redirect($url)->with('success', 'Answer Successfully Updated');
     }
 
     /**

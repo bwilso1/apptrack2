@@ -24,5 +24,6 @@
             {{Form::select('job_title', ['JavaScript' => 'JavaScript', 'PHP' => 'PHP'], null, ['placeholder' => '-Select Job-'])}}
         </div>
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+        <a class="btn btn-default" href="/applicants">Back</a>
     {!! Form::close() !!}
 @endsection
