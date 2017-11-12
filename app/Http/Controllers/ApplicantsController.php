@@ -67,14 +67,24 @@ class ApplicantsController extends Controller
     public function show($id)
     {
         $applicant = Applicant::find($id);
-        $answers = DB::table('questions')
-        ->leftJoin('answers', 'questions.id', '=', 'answers.q_id')
-        ->where('job_title', '=', $applicant->job_title)
-        ->where(function($query) use ($id){
-            $query->where('a_id', '=', $id);
-            $query->orWhere('a_id', '=', null);
-        })
-        ->get();
+        DB::statement(
+            'CREATE VIEW applicant_answers AS
+            SELECT answers.id AS ans_id, answers.response AS response, 
+            answers.q_id AS ques_id
+            FROM answers
+            WHERE answers.a_id = '.$id.';'
+        );
+        $answers = DB::select(
+            DB::raw(
+                'SELECT * 
+                FROM questions
+                LEFT JOIN applicant_answers ON questions.id = ques_id
+                WHERE questions.job_title = :job;'
+            ),
+            array('job' => $applicant->job_title)
+        );
+        DB::statement('DROP VIEW applicant_answers');
+
         return view('applicants.show')->with('applicant', $applicant)->with('answers', $answers);
     }
 

@@ -7,12 +7,12 @@
         @foreach($answers as $answer)
             <h4>{{$answer->content}}</h4>
             @if(($answer->response) == null)
-                <a href="/answers/create/{{$applicant->id}}/{{$answer->ques_id}}">Add Answer</a>
+                <a href="/answers/create/{{$applicant->id}}/{{$answer->id}}">Add Answer</a>
             @else
                 <div class="well">{{$answer->response}}</div>
                 <a href="/answers/edit/{{$applicant->id}}/{{$answer->ans_id}}">Edit</a>
             @endif
-            <br>
+            <br> <br>
         @endforeach
     </div>
 @endsection
