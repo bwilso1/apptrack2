@@ -17,6 +17,7 @@ Route::get('/answers/create/{a_id}/{q_id}', 'PagesController@createAnswer');
 Route::get('/answers/edit/{a_id}/{id}', 'PagesController@editAnswer');
 Route::get('/answers/{id}/{type}', 'PagesController@showAnswers');
 
+Route::get('applicants/filter', 'ApplicantsController@filter');
 Route::resource('applicants', 'ApplicantsController');
 Route::resource('questions', 'QuestionsController');
 Route::resource('answers', 'AnswersController');

@@ -146,4 +146,8 @@ class ApplicantsController extends Controller
         //
     }
 
+    public function filter(){
+        $test = \Request::get('job_title');
+        return $test;
+    }
 }
