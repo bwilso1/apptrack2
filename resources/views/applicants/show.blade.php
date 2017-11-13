@@ -31,7 +31,7 @@
 
      <td><strong>Willling to contract?</strong></td>
 
-     <td>{{$applicant->contrator}} </td>
+     <td>{{$applicant->contractor}} </td>
 
    </tr>
 

@@ -2,6 +2,17 @@
 
 @section('content')
     <h1 align="center">Applicants</h1> <br>
+
+    {!! Form::open(array('action' => array('ApplicantsController@index'), 'role'=>'search', 'method' => 'GET')) !!}
+        <div class="form-group">
+            {{Form::label('job_title', 'Job:')}}
+            {{Form::select('job_title', ['JavaScript' => 'JavaScript', 'PHP' => 'PHP'], null, ['placeholder' => '-Select Job-'])}}
+        </div>
+        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+    {!! Form::close() !!}
+
+    <br>
+
     <table class="table table-hover">
         <tr>
             <th>Name</th>
