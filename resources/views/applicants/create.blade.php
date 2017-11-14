@@ -21,7 +21,12 @@
         </div>
         <div class="form-group">
             {{Form::label('job_title', 'Job:')}}
-            {{Form::select('job_title', ['JavaScript' => 'JavaScript', 'PHP' => 'PHP'], null, ['placeholder' => '-Select Job-'])}}
+            <select name="job_title">
+                <option value=''>-Select Job-</option>
+                @foreach($jobs as $job)
+                    <option value='{{$job->job_title}}'>{{$job->job_title}}</option>
+                @endforeach
+            </select>
         </div>
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
         <a class="btn btn-default" href="/applicants">Back</a>
