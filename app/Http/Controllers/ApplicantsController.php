@@ -17,7 +17,8 @@ class ApplicantsController extends Controller
     public function index()
     {
         $applicants = Applicant::orderBy('created_at', 'desc')->get();
-        return view('applicants.index')->with('applicants', $applicants);
+        $jobs = Job::all();
+        return view('applicants.index')->with('applicants', $applicants)->with('jobs', $jobs);
     }
 
     /**
@@ -147,8 +148,9 @@ class ApplicantsController extends Controller
     }
 
     public function filter(Request $request){
+        $jobs = Job::all();
         $applicants = Applicant::orderBy('created_at', 'desc');
         $applicants->where('job_title', '=', $request->input('job_title'));
-        return view('applicants.index')->with('applicants', $applicants->get());
+        return view('applicants.index')->with('applicants', $applicants->get())->with('jobs', $jobs);
     }
 }
