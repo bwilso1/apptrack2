@@ -146,8 +146,9 @@ class ApplicantsController extends Controller
         //
     }
 
-    public function filter(){
-        $test = \Request::get('job_title');
-        return $test;
+    public function filter(Request $request){
+        $applicants = Applicant::orderBy('created_at', 'desc');
+        $applicants->where('job_title', '=', $request->input('job_title'));
+        return view('applicants.index')->with('applicants', $applicants->get());
     }
 }
