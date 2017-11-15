@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             {{Form::label('job_title', 'Job:')}}
-            <select name="job_title">
+            <select class="form-control" name="job_title" style="width: auto;">
                 <option value=''>-Select Job-</option>
                 @foreach($jobs as $job)
                     <option value='{{$job->job_title}}'>{{$job->job_title}}</option>
