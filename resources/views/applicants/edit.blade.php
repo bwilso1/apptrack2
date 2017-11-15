@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             {{Form::label('job_title', 'Job:')}}
-            {{Form::select('job_title', ['JavaScript' => 'JavaScript', 'PHP' => 'PHP'], $applicant->job_title)}}
+            {{Form::select('job_title', $jobArray, $applicant->job_title)}}
         </div>
         <div class="form-group">
             {{Form::label('availability', 'Availability:')}}

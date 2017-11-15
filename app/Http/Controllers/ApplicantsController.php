@@ -98,7 +98,12 @@ class ApplicantsController extends Controller
     public function edit($id)
     {
         $applicant = Applicant::find($id);
-        return view('applicants.edit')->with('applicant', $applicant);
+        $jobs = Job::all();
+        $jobArray = array();
+        foreach($jobs as $job){
+            $jobArray = array_add($jobArray, $job->job_title, $job->job_title);
+        }
+        return view('applicants.edit')->with('applicant', $applicant)->with('jobArray',$jobArray);
     }
 
     /**
