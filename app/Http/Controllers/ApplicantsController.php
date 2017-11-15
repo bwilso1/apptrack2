@@ -155,7 +155,14 @@ class ApplicantsController extends Controller
     public function filter(Request $request){
         $jobs = Job::all();
         $applicants = Applicant::orderBy('created_at', 'desc');
-        $applicants->where('job_title', '=', $request->input('job_title'));
+        if(!empty($request->input('job_title')))
+            $applicants->where('job_title', '=', $request->input('job_title'));
+        if(!empty($request->input('status')))
+            $applicants->where('status', '=', $request->input('status'));    
+        if(!empty($request->input('first_name')))
+            $applicants->where('first_name', 'like', '%'.$request->input('first_name').'%');
+        if(!empty($request->input('last_name')))
+            $applicants->where('last_name', 'like', '%'.$request->input('last_name').'%');    
         return view('applicants.index')->with('applicants', $applicants->get())->with('jobs', $jobs);
     }
 }

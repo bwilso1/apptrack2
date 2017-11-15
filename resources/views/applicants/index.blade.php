@@ -5,13 +5,28 @@
 
     {!! Form::open(array('action' => array('ApplicantsController@filter'), 'role'=>'search', 'method' => 'GET')) !!}
         <div class="form-group">
-            {{Form::label('job_title', 'Job:')}}
-            <select name="job_title">
-                <option value=''></option>
-                @foreach($jobs as $job)
-                    <option value='{{$job->job_title}}'>{{$job->job_title}}</option>
-                @endforeach
-            </select>
+            <table class="table">
+                <tr>
+                    <td>{{Form::label('job_title', 'Job:')}}</td>
+                    <td><select name="job_title">
+                        <option value=''>-Select Job-</option>
+                        @foreach($jobs as $job)
+                            <option value='{{$job->job_title}}'>{{$job->job_title}}</option>
+                        @endforeach
+                    </select></td>
+                    <td>{{Form::label('status', 'Status:')}}</td>
+                    <td>{{Form::select('status', 
+                    ['New' => 'New', 'Waiting for Input' => 'Waiting for Input', 'Pending in Review' => 'Pending in Review',
+                    'Schedule Phone Screen' => 'Schedule Phone Screen', 'Phone Screen Completed, Schedule Interview' => 'Phone Screen Completed, Schedule Interview',
+                    'Interview Complete' => 'Interview Complete', 'Wait and See' => 'Wait and See', 'Offer' => 'Offer', 'Not in Consideration' => 'Not in Consideration',
+                    'Hired - Offer Accepted' => 'Hired - Offer Accepted', 'Offer Rejected' => 'Offer Rejected'], 
+                    null, ['placeholder' => '-Select Status-'])}}</td>
+                    <td>{{Form::label('first_name', 'First Name:')}}</td>
+                    <td><input type="text" name="first_name"></td>
+                    <td>{{Form::label('last_name', 'Last Name:')}}</td>
+                    <td><input type="text" name="last_name"></td>
+                </tr>
+            </table>
         </div>
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
