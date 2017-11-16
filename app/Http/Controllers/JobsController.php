@@ -14,7 +14,8 @@ class JobsController extends Controller
      */
     public function index()
     {
-        //
+        $jobs = Job::all();
+        return view('jobs.index')->with('jobs', $jobs);
     }
 
     /**
@@ -24,7 +25,7 @@ class JobsController extends Controller
      */
     public function create()
     {
-        //
+        return view('jobs.create');
     }
 
     /**
@@ -35,7 +36,15 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'job_title' => 'required'
+        ]);
+
+        $job = new Job;
+        $job->job_title = $request->input('job_title');
+        $job->save();
+
+        return redirect('/jobs')->with('success', 'Job Successfully Added');
     }
 
     /**
