@@ -68,8 +68,9 @@ class ApplicantsController extends Controller
     public function show($id)
     {
         $applicant = Applicant::find($id);
+        $userId = auth()->user()->id;
         DB::statement(
-            'CREATE VIEW applicant_answers AS
+            'CREATE VIEW applicant_answers'.$userId.' AS
             SELECT answers.id AS ans_id, answers.response AS response, 
             answers.q_id AS ques_id
             FROM answers
@@ -79,12 +80,12 @@ class ApplicantsController extends Controller
             DB::raw(
                 'SELECT * 
                 FROM questions
-                LEFT JOIN applicant_answers ON questions.id = ques_id
+                LEFT JOIN applicant_answers'.$userId.' ON questions.id = ques_id
                 WHERE questions.job_title = :job;'
             ),
             array('job' => $applicant->job_title)
         );
-        DB::statement('DROP VIEW applicant_answers');
+        DB::statement('DROP VIEW applicant_answers'.$userId);
 
         return view('applicants.show')->with('applicant', $applicant)->with('answers', $answers);
     }
