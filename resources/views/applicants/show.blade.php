@@ -60,7 +60,7 @@
     @foreach($answers as $answer)
       @if(($answer->type) == "Interview")
         <h4>{{$answer->content}}</h4>
-        <div class="well">{{$answer->response}}</div>
+        <div class="well" style="word-wrap: break-word;">{{$answer->response}}</div>
       @endif
     @endforeach
   </div>
@@ -70,7 +70,7 @@
     @foreach($answers as $answer)
       @if(($answer->type) == "Phone Screen")
         <h4>{{$answer->content}}</h4>
-        <div class="well">{{$answer->response}}</div>
+        <div class="well" style="word-wrap: break-word;">{{$answer->response}}</div>
       @endif
     @endforeach
   </div>

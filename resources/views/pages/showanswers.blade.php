@@ -9,7 +9,7 @@
             @if(($answer->response) == null)
                 <a href="/answers/create/{{$applicant->id}}/{{$answer->id}}">Add Answer</a>
             @else
-                <div class="well">{{$answer->response}}</div>
+                <div class="well" style="word-wrap: break-word;">{{$answer->response}}</div>
                 <a href="/answers/edit/{{$applicant->id}}/{{$answer->ans_id}}">Edit</a>
             @endif
             <br> <br>

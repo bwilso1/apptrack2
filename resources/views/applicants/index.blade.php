@@ -57,5 +57,5 @@
             <p>No Applicants found</p>
         @endif
     </table> <br>
-    <button class="btn btn-primary" onclick="location.href = '/applicants/create';" >Add Applicant</button>
+    <a class="btn btn-primary" href="/applicants/create" >Add Applicant</a>
 @endsection

@@ -14,7 +14,16 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <h3>Options:</h3>
+                    <div class="list-group">
+                        <a href="/applicants" class="list-group-item">Continue to Applicant Table</a>
+                        <a href="/applicants/create" class="list-group-item">Add Applicant</a>
+                        @if(auth()->user()->role == "admin")
+                            <a href="/questions" class="list-group-item">View Questions</a>
+                            <a href="#" class="list-group-item">View Jobs</a>
+                            <a href="#" class="list-group-item">View Users</a>
+                        @endif
+                    </ul>
                 </div>
             </div>
         </div>
