@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function()
 
     Route::get('applicants/filter', 'ApplicantsController@filter');
     Route::resource('applicants', 'ApplicantsController');
+    Route::get('questions/filter', 'QuestionsController@filter');
     Route::resource('questions', 'QuestionsController');
     Route::resource('answers', 'AnswersController');
     Route::resource('jobs', 'JobsController');

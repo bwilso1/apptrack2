@@ -28,7 +28,7 @@
                 </tr>
             </table>
         </div>
-        {{Form::submit('Submit', ['class' => 'btn btn-default'])}}
+        {{Form::submit('Search', ['class' => 'btn btn-default'])}}
     {!! Form::close() !!}
 
     <br>

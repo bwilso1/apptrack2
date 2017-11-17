@@ -15,8 +15,9 @@ class QuestionsController extends Controller
      */
     public function index()
     {
+        $jobs = Job::all();
         $questions = Question::all();
-        return view('questions.index')->with('questions', $questions);
+        return view('questions.index')->with('jobs', $jobs)->with('questions', $questions);
     }
 
     /**
@@ -115,5 +116,15 @@ class QuestionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function filter(Request $request){
+        $jobs = Job::all();
+        $questions = Question::orderBy('created_at', 'asc');
+        if(!empty($request->input('job_title')))
+            $questions->where('job_title', '=', $request->input('job_title'));
+        if(!empty($request->input('type')))
+            $questions->where('type', '=', $request->input('type'));
+        return view('questions.index')->with('questions', $questions->get())->with('jobs', $jobs);
     }
 }
