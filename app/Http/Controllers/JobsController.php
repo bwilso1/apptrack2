@@ -55,7 +55,8 @@ class JobsController extends Controller
      */
     public function show($id)
     {
-        //
+        $job = Job::find($id);
+        return view('jobs.show')->with('job', $job);
     }
 
     /**
@@ -66,7 +67,8 @@ class JobsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = Job::find($id);
+        return view('jobs.edit')->with('job', $job);
     }
 
     /**
@@ -78,7 +80,15 @@ class JobsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'job_title' => 'required'
+        ]);
+
+        $job = Job::find($id);
+        $job->job_title = $request->input('job_title');
+        $job->save();
+
+        return redirect('/jobs')->with('success', 'Job Successfully Updated');
     }
 
     /**

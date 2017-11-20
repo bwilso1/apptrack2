@@ -12,7 +12,7 @@
         @if(count($jobs) > 0)
             @foreach($jobs as $job)
                 <tr>
-                    <td>{{$job->id}}</td>
+                    <td><a href="/jobs/{{$job->id}}">{{$job->id}}</a></td>
                     <td>{{$job->job_title}}</td>
                     <td>{{$job->created_at}}</td>
                 </tr>

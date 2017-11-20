@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <h1>Add Question</h1>
+    <h1 align="center">Edit Question</h1>
     {!! Form::open(['action' => ['QuestionsController@update', $question->id], 'method' => 'POST']) !!}
         <div class="form-group">
             {{Form::label('content', 'Content:')}}
