@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::resource('questions', 'QuestionsController');
     Route::resource('answers', 'AnswersController');
     Route::resource('jobs', 'JobsController');
+    Route::resource('users', 'UsersController');
 });
 
 Auth::routes();
