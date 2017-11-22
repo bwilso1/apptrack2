@@ -33,6 +33,6 @@
             ['admin' => 'Admin', 'hr' => 'HR', 'dev' => 'Dev'], null, ['placeholder' => '-Select Role-', 'class' => 'form-control form-control-dropdown'])}}
         </div>
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-        <a class="btn btn-default" href="/questions">Back</a>
+        <a class="btn btn-default" href="/users">Back</a>
     {!! Form::close() !!}
 @endsection

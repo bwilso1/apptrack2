@@ -8,14 +8,16 @@
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Entered On</th>
         </tr>
         @if(count($users) > 0)
             @foreach($users as $user)
                 <tr>
-                    <td><a href="#">{{$user->id}}</a></td>
+                    <td><a href="/users/{{$user->id}}">{{$user->id}}</a></td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role}}</td>
+                    <td>{{$user->created_at}}</td>
                 </tr>
             @endforeach
         @else
