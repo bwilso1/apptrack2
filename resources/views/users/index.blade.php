@@ -3,13 +3,16 @@
 @section('content')
     <h1 align="center">Users</h1> <br>
     <table class="table table-hover">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Entered On</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Entered On</th>
+            </tr>
+        </thead>
+        <tbody>
         @if(count($users) > 0)
             @foreach($users as $user)
                 <tr>
@@ -23,6 +26,7 @@
         @else
             <p>No Users found</p>
         @endif
+        </tbody>
     </table> <br>
     <a class="btn btn-primary" href="/users/create">Add User</a>
 @endsection

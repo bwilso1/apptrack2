@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <style>
-        #scroll {
-            overflow:hidden;
-            overflow-y: scroll;
-            height: 300px;
-        }
-    </style>
+    
 @endsection
 
 @section('content')
@@ -32,15 +26,18 @@
         {{Form::submit('Search', ['class' => 'btn btn-default'])}}
     {!! Form::close() !!}
     <br>
-    <div id="scroll">
+
     <table class="table table-hover">
-        <tr>
-            <th>ID</th>
-            <th>Content</th>
-            <th>Job</th>
-            <th>Type</th>
-            <th>Entered On</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Content</th>
+                <th>Job</th>
+                <th>Type</th>
+                <th>Entered On</th>
+            </tr>
+        </thead>
+        <tbody>
         @if(count($questions) > 0)
             @foreach($questions as $question)
                 <tr>
@@ -54,7 +51,8 @@
         @else
             <p>No Questions found</p>
         @endif
+        </tbody>
     </table>
-    </div> <br>
+    <br>
     <a class="btn btn-primary" href="/questions/create">Add Question</a>
 @endsection

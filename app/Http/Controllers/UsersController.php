@@ -16,7 +16,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->where('role', '<>', 'deactivated')->where('id', '<>', auth()->user()->id)->get();
+        $users = DB::table('users')->where('role', '<>', 'Deactivated')->where('id', '<>', auth()->user()->id)->get();
         return view('users.index')->with('users', $users);
     }
 

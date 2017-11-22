@@ -16,7 +16,7 @@ class ApplicantsController extends Controller
      */
     public function index()
     {
-        $applicants = Applicant::orderBy('created_at', 'desc')->get();
+        $applicants = Applicant::where('status', '<>', 'Deactivated')->orderBy('created_at', 'desc')->get();
         $jobs = Job::all();
         return view('applicants.index')->with('applicants', $applicants)->with('jobs', $jobs);
     }

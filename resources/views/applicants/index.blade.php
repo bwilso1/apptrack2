@@ -34,14 +34,17 @@
     <br>
 
     <table class="table table-hover">
-        <tr>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Status</th>
-            <th>Source</th>
-            <th>Entered On</th>
-            <th>Location</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Job</th>
+                <th>Status</th>
+                <th>Source</th>
+                <th>Entered On</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
         @if(count($applicants) > 0)
             @foreach($applicants as $applicant)
                 <tr>
@@ -56,6 +59,7 @@
         @else
             <p>No Applicants found</p>
         @endif
+        </tbody>
     </table> <br>
     <a class="btn btn-primary" href="/applicants/create" >Add Applicant</a>
 @endsection
