@@ -30,7 +30,7 @@
         <div class="form-group">
             {{Form::label('role', 'Role:')}}
             {{Form::select('role', 
-            ['Admin' => 'Admin', 'HR' => 'HR', 'Dev' => 'Dev'], $user->role, ['class' => 'form-control form-control-dropdown'])}}
+            ['Admin' => 'Admin', 'HR' => 'HR', 'Dev' => 'Dev', 'Deactivated' => 'Deactivate'], $user->role, ['class' => 'form-control form-control-dropdown'])}}
         </div>
         {{Form::hidden('_method', 'PUT')}}
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}

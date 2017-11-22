@@ -45,7 +45,7 @@
             ['New' => 'New', 'Waiting for Input' => 'Waiting for Input', 'Pending in Review' => 'Pending in Review',
             'Schedule Phone Screen' => 'Schedule Phone Screen', 'Phone Screen Completed, Schedule Interview' => 'Phone Screen Completed, Schedule Interview',
             'Interview Complete' => 'Interview Complete', 'Wait and See' => 'Wait and See', 'Offer' => 'Offer', 'Not in Consideration' => 'Not in Consideration',
-            'Hired - Offer Accepted' => 'Hired - Offer Accepted', 'Offer Rejected' => 'Offer Rejected'], 
+            'Hired - Offer Accepted' => 'Hired - Offer Accepted', 'Offer Rejected' => 'Offer Rejected', 'Deactivated' => 'Deactivate'], 
             $applicant->status, ['class' => 'form-control form-control-dropdown'])}}
         </div>
         <div class="form-group">
