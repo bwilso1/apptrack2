@@ -75,7 +75,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -87,7 +88,22 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'role' => 'required'
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
+        if(trim($request->input('password')) != ''){
+            $user->password = bcrypt($request->input('password'));
+        }
+        $user->save();
+
+        return redirect('/users')->with('success', 'User Successfully Updated');
     }
 
     /**
