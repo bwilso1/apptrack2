@@ -98,7 +98,10 @@ class UsersController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->role = $request->input('role');
-        if(trim($request->input('password')) != ''){
+        if($request->input('role') == 'Deactivated'){
+            $user->password = '';
+        }
+        elseif(trim($request->input('password')) != ''){
             $user->password = bcrypt($request->input('password'));
         }
         $user->save();
