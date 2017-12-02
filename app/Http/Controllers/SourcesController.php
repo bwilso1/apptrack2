@@ -56,7 +56,8 @@ class SourcesController extends Controller
      */
     public function show($id)
     {
-        //
+        $source = Source::find($id);
+        return view('sources.show')->with('source', $source);
     }
 
     /**
@@ -67,7 +68,8 @@ class SourcesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $source = Source::find($id);
+        return view('sources.edit')->with('source', $source);
     }
 
     /**
@@ -79,7 +81,15 @@ class SourcesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        $source = Source::find($id);
+        $source->name = $request->input('name');
+        $source->save();
+
+        return redirect('/sources')->with('success', 'Source Successfully Updated');
     }
 
     /**
