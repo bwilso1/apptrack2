@@ -21,6 +21,7 @@
                         @if(auth()->user()->role == "Admin")
                             <a href="/questions" class="list-group-item">View Questions</a>
                             <a href="/jobs" class="list-group-item">View Jobs</a>
+                            <a href="/sources" class="list-group-item">View Sources</a>
                             <a href="/users" class="list-group-item">View Users</a>
                         @endif
                     </ul>

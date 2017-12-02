@@ -39,8 +39,10 @@
    <tr>
     <td><strong>Status:</strong></td>
     <td>{{$applicant->status}}</td>
-    <td><strong>View Salary</strong></td>
-    <td>{{$applicant->salary}}</td>
+    @if(auth()->user()->role != "Dev")
+      <td><strong>View Salary</strong></td>
+      <td>{{$applicant->salary}}</td>
+    @endif
    </tr>
 </table>
 <div align="right">
