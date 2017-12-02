@@ -12,12 +12,17 @@
             {{Form::text('last_name', '', ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
-            {{Form::label('source', 'Source:')}}
-            {{Form::text('source', '', ['class' => 'form-control'])}}
-        </div>
-        <div class="form-group">
             {{Form::label('location', 'Location:')}}
             {{Form::text('location', '', ['class' => 'form-control'])}}
+        </div>
+        <div class="form-group">
+            {{Form::label('source', 'Source:')}}
+            <select class="form-control" name="source" style="width: auto;">
+                <option value=''>-Select Source-</option>
+                @foreach($sources as $source)
+                    <option value='{{$source->id}}'>{{$source->source_name}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             {{Form::label('job_title', 'Job:')}}

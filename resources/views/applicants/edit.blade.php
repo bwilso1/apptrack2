@@ -24,12 +24,12 @@
             {{Form::text('last_name', $applicant->last_name, ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
-            {{Form::label('source', 'Source:')}}
-            {{Form::text('source', $applicant->source, ['class' => 'form-control'])}}
-        </div>
-        <div class="form-group">
             {{Form::label('location', 'Location:')}}
             {{Form::text('location', $applicant->location, ['class' => 'form-control'])}}
+        </div>
+        <div class="form-group">
+            {{Form::label('source', 'Source:')}}
+            {{Form::select('source', $sourceArray, $applicant->source, ['class' => 'form-control form-control-dropdown'])}}
         </div>
         <div class="form-group">
             {{Form::label('job_title', 'Job:')}}

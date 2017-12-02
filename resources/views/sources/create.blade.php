@@ -12,8 +12,8 @@
     <h1 align="center">Add Source</h1>
     {!! Form::open(['action' => 'SourcesController@store', 'method' => 'POST']) !!}
         <div class="form-group">
-            {{Form::label('name', 'Name:')}}
-            {{Form::text('name', '', ['class' => 'form-control'])}}
+            {{Form::label('source_name', 'Source Name:')}}
+            {{Form::text('source_name', '', ['class' => 'form-control'])}}
         </div>
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
         <a class="btn btn-default" href="/sources">Back</a>

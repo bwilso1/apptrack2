@@ -16,7 +16,7 @@
             @foreach($sources as $source)
                 <tr>
                     <td><a href="/sources/{{$source->id}}">{{$source->id}}</a></td>
-                    <td>{{$source->name}}</td>
+                    <td>{{$source->source_name}}</td>
                     <td>{{$source->created_at}}</td>
                 </tr>
             @endforeach

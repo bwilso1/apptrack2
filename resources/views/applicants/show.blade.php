@@ -7,7 +7,7 @@
         <td><strong>Last Name:</strong></td>
         <td>{{$applicant->last_name}}</td>
         <td><strong>Source:</strong></td>
-        <td >{{$applicant->source}}</td>
+        <td >{{$source->source_name}}</td>
     </tr>
    <tr>
      <td><strong>First Name:</strong></td>

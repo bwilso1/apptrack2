@@ -38,11 +38,11 @@ class SourcesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'source_name' => 'required'
         ]);
 
         $source = new Source;
-        $source->name = $request->input('name');
+        $source->source_name = $request->input('source_name');
         $source->save();
 
         return redirect('/sources')->with('success', 'Source Successfully Added');
@@ -82,11 +82,11 @@ class SourcesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'source_name' => 'required'
         ]);
 
         $source = Source::find($id);
-        $source->name = $request->input('name');
+        $source->source_name = $request->input('source_name');
         $source->save();
 
         return redirect('/sources')->with('success', 'Source Successfully Updated');

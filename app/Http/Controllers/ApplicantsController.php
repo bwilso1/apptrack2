@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Applicant;
 use App\Job;
+use App\Source;
 use DB;
 
 class ApplicantsController extends Controller
@@ -16,9 +17,11 @@ class ApplicantsController extends Controller
      */
     public function index()
     {
-        $applicants = Applicant::select('applicants.*', 'jobs.job_title')->where('status', '<>', 'Deactivated')->join('jobs', 'applicants.job_title', '=', 'jobs.id')->orderBy('applicants.created_at', 'desc')->get();
+        $applicants = Applicant::select('applicants.*', 'jobs.job_title', 'sources.source_name AS source')->where('status', '<>', 'Deactivated')->join('jobs', 'applicants.job_title', '=', 'jobs.id')
+        ->join('sources', 'applicants.source', '=', 'sources.id')->orderBy('applicants.created_at', 'desc')->get();
         $jobs = Job::all();
-        return view('applicants.index')->with('applicants', $applicants)->with('jobs', $jobs);
+        $sources = Source::all();
+        return view('applicants.index')->with('applicants', $applicants)->with('jobs', $jobs)->with('sources', $sources);
     }
 
     /**
@@ -29,7 +32,8 @@ class ApplicantsController extends Controller
     public function create()
     {
         $jobs = Job::all();
-        return view('applicants.create')->with('jobs', $jobs);
+        $sources = Source::all();
+        return view('applicants.create')->with('jobs', $jobs)->with('sources', $sources);
     }
 
     /**
@@ -69,6 +73,7 @@ class ApplicantsController extends Controller
     {
         $applicant = Applicant::find($id);
         $job = Job::find($applicant['job_title']);
+        $source = Source::find($applicant['source']);
         $userId = auth()->user()->id;
         DB::statement(
             'CREATE VIEW applicant_answers'.$userId.' AS
@@ -88,7 +93,7 @@ class ApplicantsController extends Controller
         );
         DB::statement('DROP VIEW applicant_answers'.$userId);
 
-        return view('applicants.show')->with('applicant', $applicant)->with('answers', $answers)->with('job', $job);
+        return view('applicants.show')->with('applicant', $applicant)->with('answers', $answers)->with('job', $job)->with('source', $source);
     }
 
     /**
@@ -101,11 +106,16 @@ class ApplicantsController extends Controller
     {
         $applicant = Applicant::find($id);
         $jobs = Job::all();
+        $sources = Source::all();
         $jobArray = array();
+        $sourceArray = array();
         foreach($jobs as $job){
             $jobArray = array_add($jobArray, $job->id, $job->job_title);
         }
-        return view('applicants.edit')->with('applicant', $applicant)->with('jobArray',$jobArray);
+        foreach($sources as $source){
+            $sourceArray = array_add($sourceArray, $source->id, $source->source_name);
+        }
+        return view('applicants.edit')->with('applicant', $applicant)->with('jobArray',$jobArray)->with('sourceArray', $sourceArray);
     }
 
     /**
@@ -140,7 +150,7 @@ class ApplicantsController extends Controller
         
         $applicant->save();
 
-        return redirect('/applicants')->with('success', 'Applicant Successfully Updated');
+        return redirect('/applicants/'.$id)->with('success', 'Applicant Successfully Updated');
     }
 
     /**
@@ -156,16 +166,20 @@ class ApplicantsController extends Controller
 
     public function filter(Request $request){
         $jobs = Job::all();
+        $sources = Source::all();
         $applicants = DB::table('applicants');
         if(!empty($request->input('job_title')))
             $applicants->where('applicants.job_title', '=', $request->input('job_title'));
+        if(!empty($request->input('source')))
+            $applicants->where('applicants.source', '=', $request->input('source'));    
         if(!empty($request->input('status')))
             $applicants->where('status', '=', $request->input('status'));    
         if(!empty($request->input('first_name')))
             $applicants->where('first_name', 'like', '%'.$request->input('first_name').'%');
         if(!empty($request->input('last_name')))
             $applicants->where('last_name', 'like', '%'.$request->input('last_name').'%');
-        $applicants->select('applicants.*', 'jobs.job_title')->where('status', '<>', 'Deactivated')->join('jobs', 'applicants.job_title', '=', 'jobs.id')->orderBy('applicants.created_at', 'desc');    
-        return view('applicants.index')->with('applicants', $applicants->get())->with('jobs', $jobs);
+        $applicants->select('applicants.*', 'jobs.job_title', 'sources.source_name AS source')->where('status', '<>', 'Deactivated')->join('jobs', 'applicants.job_title', '=', 'jobs.id')
+        ->join('sources', 'applicants.source', '=', 'sources.id')->orderBy('applicants.created_at', 'desc');    
+        return view('applicants.index')->with('applicants', $applicants->get())->with('jobs', $jobs)->with('sources', $sources);
     }
 }
