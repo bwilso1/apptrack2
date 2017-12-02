@@ -24,7 +24,7 @@
             <select class="form-control" name="job_title" style="width: auto;">
                 <option value=''>-Select Job-</option>
                 @foreach($jobs as $job)
-                    <option value='{{$job->job_title}}'>{{$job->job_title}}</option>
+                    <option value='{{$job->id}}'>{{$job->job_title}}</option>
                 @endforeach
             </select>
         </div>

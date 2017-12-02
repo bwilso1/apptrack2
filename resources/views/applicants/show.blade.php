@@ -17,7 +17,7 @@
    </tr>
    <tr>
      <td><strong>Job Title:</strong></td>
-     <td> {{$applicant->job_title}}</td>
+     <td> {{$job->job_title}}</td>
      <td><strong>Conveniant to Columbia:</strong></td>
      <td >{{$applicant->close}}</td>
 

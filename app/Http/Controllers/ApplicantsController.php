@@ -16,7 +16,7 @@ class ApplicantsController extends Controller
      */
     public function index()
     {
-        $applicants = Applicant::where('status', '<>', 'Deactivated')->orderBy('created_at', 'desc')->get();
+        $applicants = Applicant::select('applicants.*', 'jobs.job_title')->where('status', '<>', 'Deactivated')->join('jobs', 'applicants.job_title', '=', 'jobs.id')->orderBy('applicants.created_at', 'desc')->get();
         $jobs = Job::all();
         return view('applicants.index')->with('applicants', $applicants)->with('jobs', $jobs);
     }
@@ -68,6 +68,7 @@ class ApplicantsController extends Controller
     public function show($id)
     {
         $applicant = Applicant::find($id);
+        $job = Job::find($applicant['job_title']);
         $userId = auth()->user()->id;
         DB::statement(
             'CREATE VIEW applicant_answers'.$userId.' AS
@@ -87,7 +88,7 @@ class ApplicantsController extends Controller
         );
         DB::statement('DROP VIEW applicant_answers'.$userId);
 
-        return view('applicants.show')->with('applicant', $applicant)->with('answers', $answers);
+        return view('applicants.show')->with('applicant', $applicant)->with('answers', $answers)->with('job', $job);
     }
 
     /**
@@ -102,7 +103,7 @@ class ApplicantsController extends Controller
         $jobs = Job::all();
         $jobArray = array();
         foreach($jobs as $job){
-            $jobArray = array_add($jobArray, $job->job_title, $job->job_title);
+            $jobArray = array_add($jobArray, $job->id, $job->job_title);
         }
         return view('applicants.edit')->with('applicant', $applicant)->with('jobArray',$jobArray);
     }
@@ -155,15 +156,16 @@ class ApplicantsController extends Controller
 
     public function filter(Request $request){
         $jobs = Job::all();
-        $applicants = Applicant::orderBy('created_at', 'desc');
+        $applicants = DB::table('applicants');
         if(!empty($request->input('job_title')))
-            $applicants->where('job_title', '=', $request->input('job_title'));
+            $applicants->where('applicants.job_title', '=', $request->input('job_title'));
         if(!empty($request->input('status')))
             $applicants->where('status', '=', $request->input('status'));    
         if(!empty($request->input('first_name')))
             $applicants->where('first_name', 'like', '%'.$request->input('first_name').'%');
         if(!empty($request->input('last_name')))
-            $applicants->where('last_name', 'like', '%'.$request->input('last_name').'%');    
+            $applicants->where('last_name', 'like', '%'.$request->input('last_name').'%');
+        $applicants->select('applicants.*', 'jobs.job_title')->where('status', '<>', 'Deactivated')->join('jobs', 'applicants.job_title', '=', 'jobs.id')->orderBy('applicants.created_at', 'desc');    
         return view('applicants.index')->with('applicants', $applicants->get())->with('jobs', $jobs);
     }
 }
