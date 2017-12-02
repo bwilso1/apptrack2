@@ -64,7 +64,8 @@ class QuestionsController extends Controller
     public function show($id)
     {
         $question = Question::find($id);
-        return view('questions.show')->with('question', $question);
+        $job = Job::find($question['job_title']);
+        return view('questions.show')->with('question', $question)->with('job', $job);
     }
 
     /**

@@ -3,7 +3,7 @@
 @section('content')
     <h1>Question {{$question->id}}</h1>
     <br>
-    <h4><strong>Job:</strong> {{$question->job_title}}</h4>
+    <h4><strong>Job:</strong> {{$job->job_title}}</h4>
     <h4><strong>Type:</strong> {{$question->type}}</h4>
 
     <h3>Content:</h3>
