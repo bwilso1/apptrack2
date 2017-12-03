@@ -26,6 +26,7 @@ class CreateApplicantsTable extends Migration
             $table->string('availability')->nullable();
             $table->string('close')->nullable();
             $table->string('remote')->nullable();
+            $table->string('part_time')->nullable();
             $table->timestamps();
         });
     }

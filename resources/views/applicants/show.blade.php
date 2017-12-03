@@ -20,22 +20,19 @@
      <td> {{$job->job_title}}</td>
      <td><strong>Conveniant to Columbia:</strong></td>
      <td >{{$applicant->close}}</td>
-
    </tr>
-
    <tr>
-
-     <td><strong>Availability:</strong></td>
-
-     <td >{{$applicant->availability}}</td>
-
-     <td><strong>Willling to contract?</strong></td>
-
-     <td>{{$applicant->contractor}} </td>
-
+     <td><strong>Remote:</strong></td>
+     <td >{{$applicant->remote}}</td>
+     <td><strong>Part Time:</strong></td>
+     <td>{{$applicant->part_time}} </td>
    </tr>
-
-
+   <tr>
+     <td><strong>Availability:</strong></td>
+     <td >{{$applicant->availability}}</td>
+     <td><strong>Willling to contract?</strong></td>
+     <td>{{$applicant->contractor}} </td>
+   </tr>
    <tr>
     <td><strong>Status:</strong></td>
     <td>{{$applicant->status}}</td>
