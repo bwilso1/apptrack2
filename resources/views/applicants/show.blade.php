@@ -55,7 +55,7 @@
 <div class="tab-content">
   <div id="interview" class="tab-pane fade in active">
     <h2>Interview Questions</h2>
-    <div align="right"><a href="/answers/{{$applicant->id}}/Interview">Advanced Options</a></div>
+    <div align="right"><a href="/answers/{{$applicant->id}}/Interview">Edit Interview Answers</a></div>
     @foreach($answers as $answer)
       @if(($answer->type) == "Interview")
         <h4>{{$answer->content}}</h4>
@@ -65,7 +65,7 @@
   </div>
   <div id="phone" class="tab-pane fade">
     <h2>Phone Screen Questions</h2>
-    <div align="right"><a href="/answers/{{$applicant->id}}/Phone Screen">Advanced Options</a></div>
+    <div align="right"><a href="/answers/{{$applicant->id}}/Phone Screen">Edit Phone Screen Answers</a></div>
     @foreach($answers as $answer)
       @if(($answer->type) == "Phone Screen")
         <h4>{{$answer->content}}</h4>
@@ -75,7 +75,7 @@
   </div>
   <div id="assess" class="tab-pane fade">
     <h2>Assessment</h2>
-    <p>The assessment of the applicant will be here.</p>
+    <div class="well" style="word-wrap: break-word;">{{$applicant->assessment}}</div>
   </div>
 </div>
 @endsection

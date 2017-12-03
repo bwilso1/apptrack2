@@ -149,6 +149,7 @@ class ApplicantsController extends Controller
         $applicant->contractor = $request->input('contractor');
         $applicant->availability = $request->input('availability');
         $applicant->close = $request->input('close');
+        $applicant->assessment = $request->input('assessment');
         
         $applicant->save();
 

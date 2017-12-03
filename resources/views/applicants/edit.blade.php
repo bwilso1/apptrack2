@@ -68,6 +68,10 @@
             {{Form::label('salary', 'Salary:')}}
             {{Form::text('salary', $applicant->salary, ['class' => 'form-control'])}}
         </div>
+        <div class="form-group">
+            {{Form::label('assessment', 'Assessment:')}}
+            {{Form::textarea('assessment', $applicant->assessment, ['class' => 'form-control'])}}
+        </div>
         {{Form::hidden('_method', 'PUT')}}
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
         <a class="btn btn-default" href="/applicants/{{$applicant->id}}">Back</a>
