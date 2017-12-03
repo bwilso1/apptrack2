@@ -49,6 +49,14 @@
             $applicant->status, ['class' => 'form-control form-control-dropdown'])}}
         </div>
         <div class="form-group">
+            {{Form::label('remote', 'Remote:')}}
+            {{Form::select('remote', ['' => '', 'Yes' => 'Yes', 'No' => 'No'], $applicant->remote, ['class' => 'form-control form-control-dropdown'])}}
+        </div>
+        <div class="form-group">
+            {{Form::label('part_time', 'Part Time:')}}
+            {{Form::select('part_time', ['' => '', 'Yes' => 'Yes', 'No' => 'No'], $applicant->part_time, ['class' => 'form-control form-control-dropdown'])}}
+        </div>
+        <div class="form-group">
             {{Form::label('close', 'Conveniant to Columbia:')}}
             {{Form::select('close', ['' => '', 'Yes' => 'Yes', 'No' => 'No'], $applicant->close, ['class' => 'form-control form-control-dropdown'])}}
         </div>

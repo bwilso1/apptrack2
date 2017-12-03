@@ -144,6 +144,8 @@ class ApplicantsController extends Controller
 
         $applicant->status = $request->input('status');
         $applicant->salary = $request->input('salary');
+        $applicant->remote = $request->input('remote');
+        $applicant->part_time = $request->input('part_time');
         $applicant->contractor = $request->input('contractor');
         $applicant->availability = $request->input('availability');
         $applicant->close = $request->input('close');
