@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->string('content');
             $table->string('job_title');
+            $table->string('type');
             $table->timestamps();
         });
     }
