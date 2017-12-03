@@ -15,7 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('content');
+            $table->mediumText('content');
             $table->string('job_title');
             $table->string('type');
             $table->timestamps();
