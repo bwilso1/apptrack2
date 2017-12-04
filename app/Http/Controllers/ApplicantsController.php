@@ -181,6 +181,12 @@ class ApplicantsController extends Controller
             $applicants->where('first_name', 'like', '%'.$request->input('first_name').'%');
         if(!empty($request->input('last_name')))
             $applicants->where('last_name', 'like', '%'.$request->input('last_name').'%');
+        if(!empty($request->input('part_time')))
+            $applicants->where('part_time', '=', $request->input('part_time'));
+        if(!empty($request->input('remote')))
+            $applicants->where('remote', '=', $request->input('remote'));
+        if(!empty($request->input('contractor')))
+            $applicants->where('contractor', '=', $request->input('contractor'));
         $applicants->select('applicants.*', 'jobs.job_title', 'sources.source_name AS source')->where('status', '<>', 'Deactivated')->join('jobs', 'applicants.job_title', '=', 'jobs.id')
         ->join('sources', 'applicants.source', '=', 'sources.id')->orderBy('applicants.created_at', 'desc');    
         return view('applicants.index')->with('applicants', $applicants->get())->with('jobs', $jobs)->with('sources', $sources);

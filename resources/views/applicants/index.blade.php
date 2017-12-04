@@ -30,6 +30,14 @@
                     null, ['placeholder' => '-Select Status-'])}}</td>
                 </tr>
                 <tr>
+                    <td>{{Form::label('contractor', 'Contractor:')}}</td>
+                    <td>{{Form::select('contractor', ['Yes' => 'Yes', 'No' => 'No'], null, ['placeholder' => '-Select Option-'])}}</td>
+                    <td>{{Form::label('part_time', 'Part Time:')}}</td>
+                    <td>{{Form::select('part_time', ['Yes' => 'Yes', 'No' => 'No'], null, ['placeholder' => '-Select Option-'])}}</td>
+                    <td>{{Form::label('remote', 'Remote:')}}</td>
+                    <td>{{Form::select('remote', ['Yes' => 'Yes', 'No' => 'No'], null, ['placeholder' => '-Select Option-'])}}</td>
+                </tr>
+                <tr>
                     <td>{{Form::label('first_name', 'First Name:')}}</td>
                     <td><input type="text" name="first_name"></td>
                     <td>{{Form::label('last_name', 'Last Name:')}}</td>
