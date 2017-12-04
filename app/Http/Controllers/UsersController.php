@@ -16,6 +16,8 @@ class UsersController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $users = DB::table('users')->where('role', '<>', 'Deactivated')->where('id', '<>', auth()->user()->id)->get();
         return view('users.index')->with('users', $users);
     }
@@ -27,6 +29,8 @@ class UsersController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         return view('users.create');
     }
 
@@ -38,6 +42,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
@@ -63,6 +69,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $user = User::find($id);
         return view('users.show')->with('user', $user);
     }
@@ -75,6 +83,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $user = User::find($id);
         return view('users.edit')->with('user', $user);
     }
@@ -88,6 +98,8 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',

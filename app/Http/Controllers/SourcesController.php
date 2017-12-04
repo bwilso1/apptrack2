@@ -15,6 +15,8 @@ class SourcesController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $sources = Source::all();
         return view('sources.index')->with('sources', $sources);
     }
@@ -26,6 +28,8 @@ class SourcesController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         return view('sources.create');
     }
 
@@ -37,6 +41,8 @@ class SourcesController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $this->validate($request, [
             'source_name' => 'required'
         ]);
@@ -56,6 +62,8 @@ class SourcesController extends Controller
      */
     public function show($id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');           
         $source = Source::find($id);
         return view('sources.show')->with('source', $source);
     }
@@ -68,6 +76,8 @@ class SourcesController extends Controller
      */
     public function edit($id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $source = Source::find($id);
         return view('sources.edit')->with('source', $source);
     }
@@ -81,6 +91,8 @@ class SourcesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $this->validate($request, [
             'source_name' => 'required'
         ]);

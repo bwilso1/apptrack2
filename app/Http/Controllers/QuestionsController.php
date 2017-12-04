@@ -16,6 +16,8 @@ class QuestionsController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $jobs = Job::all();
         $questions = Question::select('questions.*', 'jobs.job_title')->join('jobs', 'questions.job_title', '=', 'jobs.id')->orderBy('questions.created_at', 'asc')->get();
         return view('questions.index')->with('jobs', $jobs)->with('questions', $questions);
@@ -28,6 +30,8 @@ class QuestionsController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $jobs = Job::all();
         return view('questions.create')->with('jobs', $jobs);
     }
@@ -40,6 +44,8 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $this->validate($request, [
             'content' => 'required',
             'job_title' => 'required',
@@ -63,6 +69,8 @@ class QuestionsController extends Controller
      */
     public function show($id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $question = Question::find($id);
         $job = Job::find($question['job_title']);
         return view('questions.show')->with('question', $question)->with('job', $job);
@@ -76,6 +84,8 @@ class QuestionsController extends Controller
      */
     public function edit($id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $question = Question::find($id);
         $jobs = Job::all();
         $jobArray = array();
@@ -94,6 +104,8 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $this->validate($request, [
             'content' => 'required',
             'job_title' => 'required',
@@ -121,6 +133,8 @@ class QuestionsController extends Controller
     }
 
     public function filter(Request $request){
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $jobs = Job::all();
         $questions = DB::table('questions');
         if(!empty($request->input('job_title')))

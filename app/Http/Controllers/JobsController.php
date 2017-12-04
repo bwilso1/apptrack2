@@ -14,6 +14,8 @@ class JobsController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $jobs = Job::all();
         return view('jobs.index')->with('jobs', $jobs);
     }
@@ -25,6 +27,8 @@ class JobsController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         return view('jobs.create');
     }
 
@@ -36,6 +40,8 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $this->validate($request, [
             'job_title' => 'required'
         ]);
@@ -55,6 +61,8 @@ class JobsController extends Controller
      */
     public function show($id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $job = Job::find($id);
         return view('jobs.show')->with('job', $job);
     }
@@ -67,6 +75,8 @@ class JobsController extends Controller
      */
     public function edit($id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $job = Job::find($id);
         return view('jobs.edit')->with('job', $job);
     }
@@ -80,6 +90,8 @@ class JobsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(auth()->user()->role != "Admin")
+            return redirect('/home');
         $this->validate($request, [
             'job_title' => 'required'
         ]);
