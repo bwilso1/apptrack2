@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddResumeToApplicants' => $baseDir . '/database/migrations/2017_12_05_035622_add_resume_to_applicants.php',
     'App\\Answer' => $baseDir . '/app/Answer.php',
     'App\\Applicant' => $baseDir . '/app/Applicant.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -22,6 +23,7 @@ return array(
     'App\\Http\\Controllers\\JobsController' => $baseDir . '/app/Http/Controllers/JobsController.php',
     'App\\Http\\Controllers\\PagesController' => $baseDir . '/app/Http/Controllers/PagesController.php',
     'App\\Http\\Controllers\\QuestionsController' => $baseDir . '/app/Http/Controllers/QuestionsController.php',
+    'App\\Http\\Controllers\\SourcesController' => $baseDir . '/app/Http/Controllers/SourcesController.php',
     'App\\Http\\Controllers\\UsersController' => $baseDir . '/app/Http/Controllers/UsersController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',

@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 align="center">Add Applicant</h1>
-    {!! Form::open(['action' => 'ApplicantsController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['action' => 'ApplicantsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">
             {{Form::label('first_name', 'First Name:')}}
             {{Form::text('first_name', '', ['class' => 'form-control'])}}
@@ -32,6 +32,10 @@
                     <option value='{{$job->id}}'>{{$job->job_title}}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group">
+            {{Form::label('resume', 'Resume (Optional):')}}
+            {{Form::file('resume')}}
         </div>
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
         <a class="btn btn-default" href="/applicants">Back</a>

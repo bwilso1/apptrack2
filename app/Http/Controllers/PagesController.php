@@ -33,6 +33,7 @@ class PagesController extends Controller
         $applicant = Applicant::find($id);
         $userId = auth()->user()->id;
         
+        DB::statement('DROP VIEW IF EXISTS applicant_answers'.$userId);
         DB::statement(
             'CREATE VIEW applicant_answers'.$userId.' AS
             SELECT answers.id AS ans_id, answers.response AS response, 

@@ -50,6 +50,7 @@
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#interview">Interview</a></li>
   <li><a data-toggle="tab" href="#phone">Phone Screen</a></li>
+  <li><a data-toggle="tab" href="#resume">Resume</a></li>
   <li><a data-toggle="tab" href="#assess">Assessment</a></li>
 </ul>
 <div class="tab-content">
@@ -72,6 +73,14 @@
         <div class="well" style="word-wrap: break-word;">{{$answer->response}}</div>
       @endif
     @endforeach
+  </div>
+  <div id="resume" class="tab-pane fade">
+    <h2>Resume</h2>
+    @if(($applicant->resume) != null)
+      <a href="/storage/resumes/{{$applicant->resume}}" target="_blank">{{$applicant->first_name}} {{$applicant->last_name}}'s Resume</a>
+    @else
+      <p>{{$applicant->first_name}} {{$applicant->last_name}}'s resume has not been uploaded yet.</p>
+    @endif
   </div>
   <div id="assess" class="tab-pane fade">
     <h2>Assessment</h2>

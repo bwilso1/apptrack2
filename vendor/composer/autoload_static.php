@@ -279,6 +279,7 @@ class ComposerStaticInit64b371dd3280b10ed444f7de1c49dcde
     );
 
     public static $classMap = array (
+        'AddResumeToApplicants' => __DIR__ . '/../..' . '/database/migrations/2017_12_05_035622_add_resume_to_applicants.php',
         'App\\Answer' => __DIR__ . '/../..' . '/app/Answer.php',
         'App\\Applicant' => __DIR__ . '/../..' . '/app/Applicant.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -295,6 +296,7 @@ class ComposerStaticInit64b371dd3280b10ed444f7de1c49dcde
         'App\\Http\\Controllers\\JobsController' => __DIR__ . '/../..' . '/app/Http/Controllers/JobsController.php',
         'App\\Http\\Controllers\\PagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagesController.php',
         'App\\Http\\Controllers\\QuestionsController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuestionsController.php',
+        'App\\Http\\Controllers\\SourcesController' => __DIR__ . '/../..' . '/app/Http/Controllers/SourcesController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

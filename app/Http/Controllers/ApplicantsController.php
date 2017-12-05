@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Applicant;
 use App\Job;
 use App\Source;
@@ -49,7 +50,8 @@ class ApplicantsController extends Controller
             'last_name' => 'required',
             'source' => 'required',
             'location' => 'required',
-            'job_title' => 'required'
+            'job_title' => 'required',
+            'resume' => 'max:1999'
         ]);
 
         $applicant = new Applicant;
@@ -58,6 +60,20 @@ class ApplicantsController extends Controller
         $applicant->source = $request->input('source');
         $applicant->location = $request->input('location');
         $applicant->job_title = $request->input('job_title');
+        if($request->hasFile('resume')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('resume')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just extension
+            $extension = $request->file('resume')->getClientOriginalExtension();
+            // Filename to store
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('resume')->storeAs('public/resumes', $filenameToStore);
+            // Save to Database
+            $applicant->resume = $filenameToStore;
+        }
         $applicant->save();
 
         return redirect('/applicants')->with('success', 'Applicant Successfully Added');
@@ -75,6 +91,7 @@ class ApplicantsController extends Controller
         $job = Job::find($applicant['job_title']);
         $source = Source::find($applicant['source']);
         $userId = auth()->user()->id;
+        DB::statement('DROP VIEW IF EXISTS applicant_answers'.$userId);
         DB::statement(
             'CREATE VIEW applicant_answers'.$userId.' AS
             SELECT answers.id AS ans_id, answers.response AS response, 
@@ -132,7 +149,8 @@ class ApplicantsController extends Controller
             'last_name' => 'required',
             'source' => 'required',
             'location' => 'required',
-            'job_title' => 'required'
+            'job_title' => 'required',
+            'resume' => 'max:1999'
         ]);
 
         $applicant = Applicant::find($id);
@@ -141,6 +159,24 @@ class ApplicantsController extends Controller
         $applicant->source = $request->input('source');
         $applicant->location = $request->input('location');
         $applicant->job_title = $request->input('job_title');
+        if($request->hasFile('resume')){
+            // Delete previously uploaded file if exists
+            if($applicant->resume != null){
+                Storage::delete('public/resumes/'.$applicant->resume);
+            }
+            // Get filename with the extension
+            $filenameWithExt = $request->file('resume')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just extension
+            $extension = $request->file('resume')->getClientOriginalExtension();
+            // Filename to store
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('resume')->storeAs('public/resumes', $filenameToStore);
+            // Save to Database
+            $applicant->resume = $filenameToStore;
+        }
 
         $applicant->status = $request->input('status');
         $applicant->salary = $request->input('salary');

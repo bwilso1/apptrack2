@@ -14,7 +14,7 @@
 
 @section('content')
     <h1 align="center">Edit Applicant</h1>
-    {!! Form::open(['action' => ['ApplicantsController@update', $applicant->id], 'method' => 'POST']) !!}
+    {!! Form::open(['action' => ['ApplicantsController@update', $applicant->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">
             {{Form::label('first_name', 'First Name:')}}
             {{Form::text('first_name', $applicant->first_name, ['class' => 'form-control'])}}
@@ -34,6 +34,10 @@
         <div class="form-group">
             {{Form::label('job_title', 'Job:')}}
             {{Form::select('job_title', $jobArray, $applicant->job_title, ['class' => 'form-control form-control-dropdown'])}}
+        </div>
+        <div class="form-group">
+            {{Form::label('resume', 'Resume (Optional):')}}
+            {{Form::file('resume')}}
         </div>
         <div class="form-group">
             {{Form::label('availability', 'Availability:')}}
