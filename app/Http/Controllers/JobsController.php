@@ -43,7 +43,7 @@ class JobsController extends Controller
         if(auth()->user()->role != "Admin")
             return redirect('/home');
         $this->validate($request, [
-            'job_title' => 'required'
+            'job_title' => 'required|unique:jobs'
         ]);
 
         $job = new Job;
@@ -93,7 +93,7 @@ class JobsController extends Controller
         if(auth()->user()->role != "Admin")
             return redirect('/home');
         $this->validate($request, [
-            'job_title' => 'required'
+            'job_title' => 'required|unique:jobs'
         ]);
 
         $job = Job::find($id);

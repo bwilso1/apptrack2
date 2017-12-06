@@ -44,7 +44,7 @@ class SourcesController extends Controller
         if(auth()->user()->role != "Admin")
             return redirect('/home');
         $this->validate($request, [
-            'source_name' => 'required'
+            'source_name' => 'required|unique:sources'
         ]);
 
         $source = new Source;
@@ -94,7 +94,7 @@ class SourcesController extends Controller
         if(auth()->user()->role != "Admin")
             return redirect('/home');
         $this->validate($request, [
-            'source_name' => 'required'
+            'source_name' => 'required|unique:sources'
         ]);
 
         $source = Source::find($id);

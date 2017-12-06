@@ -46,7 +46,7 @@ class UsersController extends Controller
             return redirect('/home');
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
             'role' => 'required'
         ]);
@@ -102,7 +102,7 @@ class UsersController extends Controller
             return redirect('/home');
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'role' => 'required',
             'password' => 'sometimes|nullable|confirmed|min:6'
         ]);
