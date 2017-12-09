@@ -68,10 +68,12 @@
             {{Form::label('contractor', 'Willing to Contract?')}}
             {{Form::select('contractor', ['' => '', 'Yes' => 'Yes', 'No' => 'No'], $applicant->contractor, ['class' => 'form-control form-control-dropdown'])}}
         </div>
-        <div class="form-group">
-            {{Form::label('salary', 'Salary:')}}
-            {{Form::text('salary', $applicant->salary, ['class' => 'form-control'])}}
-        </div>
+        @if(auth()->user()->role != "Dev")
+            <div class="form-group">
+                {{Form::label('salary', 'Salary:')}}
+                {{Form::text('salary', $applicant->salary, ['class' => 'form-control'])}}
+            </div>
+        @endif
         <div class="form-group">
             {{Form::label('assessment', 'Assessment:')}}
             {{Form::textarea('assessment', $applicant->assessment, ['class' => 'form-control'])}}

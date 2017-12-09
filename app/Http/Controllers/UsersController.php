@@ -18,6 +18,7 @@ class UsersController extends Controller
     {
         if(auth()->user()->role != "Admin")
             return redirect('/home');
+        // Gets all users in the system except the logged in user and orders them by entry date.
         $users = DB::table('users')->where('role', '<>', 'Deactivated')->where('id', '<>', auth()->user()->id)->get();
         return view('users.index')->with('users', $users);
     }
@@ -46,7 +47,9 @@ class UsersController extends Controller
             return redirect('/home');
         $this->validate($request, [
             'name' => 'required',
+            // Checks if the field is the proper email structure and is unique
             'email' => 'required|email|unique:users',
+            // Checks if the password and confirmation match and is at least 6 characters
             'password' => 'required|confirmed|min:6',
             'role' => 'required'
         ]);
@@ -102,8 +105,10 @@ class UsersController extends Controller
             return redirect('/home');
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            // Checks if the field is the proper email structure
+            'email' => 'required|email',
             'role' => 'required',
+            // Makes password field optional, but still check for confirmation and minimum characters if entered.
             'password' => 'sometimes|nullable|confirmed|min:6'
         ]);
 

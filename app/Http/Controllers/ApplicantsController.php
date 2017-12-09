@@ -18,6 +18,7 @@ class ApplicantsController extends Controller
      */
     public function index()
     {
+        // Gets all applicants that are active, joins them with their jobs and sources, and orders them by entry date.
         $applicants = Applicant::select('applicants.*', 'jobs.job_title', 'sources.source_name AS source')->where('status', '<>', 'Deactivated')->join('jobs', 'applicants.job_title', '=', 'jobs.id')
         ->join('sources', 'applicants.source', '=', 'sources.id')->orderBy('applicants.created_at', 'desc')->get();
         $jobs = Job::all();
@@ -60,6 +61,7 @@ class ApplicantsController extends Controller
         $applicant->source = $request->input('source');
         $applicant->location = $request->input('location');
         $applicant->job_title = $request->input('job_title');
+        // File Upload
         if($request->hasFile('resume')){
             // Get filename with the extension
             $filenameWithExt = $request->file('resume')->getClientOriginalName();
@@ -91,6 +93,7 @@ class ApplicantsController extends Controller
         $job = Job::find($applicant['job_title']);
         $source = Source::find($applicant['source']);
         $userId = auth()->user()->id;
+        // The DB queries create a view of an individual applicant's answers and joins them with their respective questions based on job title
         DB::statement('DROP VIEW IF EXISTS applicant_answers'.$userId);
         DB::statement(
             'CREATE VIEW applicant_answers'.$userId.' AS
@@ -126,9 +129,11 @@ class ApplicantsController extends Controller
         $sources = Source::all();
         $jobArray = array();
         $sourceArray = array();
+        // Creating a jobs array for the drop-down menu on the form
         foreach($jobs as $job){
             $jobArray = array_add($jobArray, $job->id, $job->job_title);
         }
+        // Creating a sources array for the drop-down menu on the form
         foreach($sources as $source){
             $sourceArray = array_add($sourceArray, $source->id, $source->source_name);
         }
@@ -159,6 +164,7 @@ class ApplicantsController extends Controller
         $applicant->source = $request->input('source');
         $applicant->location = $request->input('location');
         $applicant->job_title = $request->input('job_title');
+        // File Upload
         if($request->hasFile('resume')){
             // Delete previously uploaded file if exists
             if($applicant->resume != null){
@@ -179,7 +185,9 @@ class ApplicantsController extends Controller
         }
 
         $applicant->status = $request->input('status');
-        $applicant->salary = $request->input('salary');
+        if(auth()->user()->role != "Dev"){
+            $applicant->salary = $request->input('salary');
+        }
         $applicant->remote = $request->input('remote');
         $applicant->part_time = $request->input('part_time');
         $applicant->contractor = $request->input('contractor');
@@ -206,6 +214,7 @@ class ApplicantsController extends Controller
     public function filter(Request $request){
         $jobs = Job::all();
         $sources = Source::all();
+        // Checks to see which search options have been selected and does where statements to filter out what the user wants.
         $applicants = DB::table('applicants');
         if(!empty($request->input('job_title')))
             $applicants->where('applicants.job_title', '=', $request->input('job_title'));

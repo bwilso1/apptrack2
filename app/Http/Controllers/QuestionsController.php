@@ -19,6 +19,7 @@ class QuestionsController extends Controller
         if(auth()->user()->role != "Admin")
             return redirect('/home');
         $jobs = Job::all();
+        // Join the questions with their respective job title and orders them from oldest to newest.
         $questions = Question::select('questions.*', 'jobs.job_title')->join('jobs', 'questions.job_title', '=', 'jobs.id')->orderBy('questions.created_at', 'asc')->get();
         return view('questions.index')->with('jobs', $jobs)->with('questions', $questions);
     }
@@ -136,6 +137,7 @@ class QuestionsController extends Controller
         if(auth()->user()->role != "Admin")
             return redirect('/home');
         $jobs = Job::all();
+        // Checks to see which search options have been selected and does where statements to filter out what the user wants.
         $questions = DB::table('questions');
         if(!empty($request->input('job_title')))
             $questions->where('questions.job_title', '=', $request->input('job_title'));
