@@ -1,12 +1,6 @@
 ## Applicant Tracker
 ### A Laravel Web application by "Agile, Handle with Care"
-Members:
-Arvin Siva
-Brian Wilson
-Vihar Patel
-James Baker
-Steven Hargrove
-Logan Rites
+Members: Arvin Siva, Brian Wilson, Vihar Patel, James Baker, Steven Hargrove, Logan Rites
 
 ## About App Tracker
 This application was designed for Mosaic Learning by Team 5, "Agile, Handle with Care" for our Software Engineering class at UMBC.  This application aims to assist in searching for and managing current applicants of Mosaic Learning.  App Tracker uses a mySQL database and the Laravel framework (more info below).  
