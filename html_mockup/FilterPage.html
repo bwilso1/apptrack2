@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <link rel="stylesheet" type="text/css" href="apptrack.css">
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Applicant Tracking System</title>
+
+
+</head>
+
+
+<body>
+
+<h1>Applicant Tracking System</h1>
+
+<div style="text-align: right;">
+<a href="controlPanel.html"><input value="Admin Control Panel" type="button"></a> &nbsp; &nbsp; &nbsp;
+<a href="AddApplicant.html"><input value="Add Applicant" type="button"></a>&nbsp;
+<input value="Change Password" onclick="alert('not yet implemented')" type="button">&nbsp;
+<a href="login.html"><input value="Logout" type="button"></a></div>
+
+<hr style="width: 100%; height: 2px;">
+<table style="text-align: left; width: 100%; background-color: rgb(220, 150, 20);" 0="" cellpadding="1">
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 322px;">First: <input name="fname" size="15" type="text"></td>
+
+      <td style="width: 370px;">Job:&nbsp;
+      <select>
+	 <option></option>
+      <option>PHP-Dev</option>
+      <option>Java-Dev</option>
+      <option>Full-Stack</option>
+      <option>Graphic Design</option>
+      </select>
+
+      </td>
+
+      <td style="width: 518px;"> Application Recieved Date: &nbsp;<input name="app-date">   </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 322px;">Last: <input name="lname" size="15" type="text"></td>
+
+      <td style="width: 370px;"> Source:
+      <select name="applicant_source">
+      <option value="source-none"></option>
+      <option value="source-internal">internal</option>
+      <option value="source-ML-web">ML Website</option>
+      <option value="source-latitude">Latitude</option>
+      <option value="source-randstad">Randstad</option>
+      <option></option>
+      </select>
+
+      </td>
+
+      <td style="width: 518px;">Location-City: <input name="loc" size="25" type="text">
+&nbsp;Location-State:&nbsp;
+      <select name="location-state">
+      <option value="none"></option>
+      <option value="location-MD">MD</option>
+      <option value="location-DC">DC</option>
+      <option value="location-PA">PA</option>
+      <option value="location-CA">CA</option>
+      </select> </td>
+
+    </tr>
+
+    <tr>
+
+	<td style="width: 322px;"> Status:
+	<select name="Status">
+	<option></option>
+	<option> New </option>
+	<option> Waiting for Input</option>
+	<option> Pending In Review</option>
+	<option> Schedule Phone Sreen</option>
+	<option> Phone Screen Complete, Schedule Interview</option>
+	<option> Interview Complete</option>
+	<option> Wait and See</option>
+	<option> Offer</option>
+	<option> Not in Consideration</option>
+	<option> Hired - Offer Accepted</option>
+	<option> Offer Rejected</option>
+	</select>
+
+      </td>
+
+      <td style="width: 370px;"> Willing to
+contract:&nbsp;
+      <select name="contractor">
+      <option value="contract-null"></option>
+      <option value="contract-yes">Yes</option>
+      <option value="contract-no">No</option>
+      </select>
+      </td>
+
+      <td style="width: 518px;">Conveniant to Columbia: 
+	 <select> 
+	 <option></option>
+	 <option> yes </option>
+	 <option> no </option>
+	 </select>
+	 </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<div style="text-align: right;">
+<button type="button" onclick="alert('not yet implemented')">Search</button></div>
+
+<br>
+
+examples ( <a href="ViewApplicant_DEV.html"> DEV view
+applicant</a> ) &nbsp;( <a href="ViewApplicant_HR.html">
+HR view applicant </a> ) &nbsp;( <a href="ViewApplicant_MGR.html"> MGR view applicant </a>
+)<br>
+
+<br>
+
+<div class="scrollable">
+<table style="text-align: left; width: 95%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <th>Name</th>
+      <th>Job</th>
+      <th style="width: 149px;">Status</th>
+      <td style="width: 175px;"><span style="font-weight: bold;">Source</span></td>
+      <td style="width: 149px;"><span style="font-weight: bold;">Application Date</span></td>
+      <td><span style="font-weight: bold;">Location</span></td>
+    </tr>
+
+    <tr>
+      <td> <a href="ViewApplicant_DEV.html">John Doe</a></td>
+      <td>PHP-Dev</td>
+      <td style="width: 149px;">New</td>
+      <td style="width: 175px;">Internal</td>
+      <td style="width: 149px;">1/27/17</td>
+      <td>Baltimore, MD</td>
+    </tr>
+
+    <tr>
+      <td> <a href="ViewApplicant_DEV.html">Arvin Siva</a> </td>
+      <td>Web-Dev</td>
+      <td style="width: 149px;">Interview Complete</td>
+      <td style="width: 175px;">ML website</td>
+      <td style="width: 149px;">10/24/17</td>
+      <td>Local</td>
+
+    </tr>
+
+    <tr>
+
+      <td> <a href="ViewApplicant_DEV.html">Brian Wilson</a> </td>
+      <td>Page Break Specialist</td>
+      <td style="width: 149px;">Not in consideration</td>
+      <td style="width: 175px;">Randstead</td>
+      <td style="width: 149px;">5/5/16</td>
+      <td>Local</td>
+
+    </tr>
+
+    <tr>
+
+      <td> <a href="ViewApplicant_DEV.html">James Baker</a> </td>
+      <td>Documentation Writer</td>
+      <td style="width: 149px;">Interview Complete</td>
+      <td style="width: 175px;">Latitude</td>
+      <td style="width: 149px;">3/1/17</td>
+      <td>Local</td>
+
+    </tr>
+
+    <tr>
+      <td> <a href="ViewApplicant_DEV.html">Logan Rites</a> </td>
+      <td>Agile Specialist</td>
+      <td style="width: 149px;">Hired - Offer Accepted</td>
+      <td style="width: 175px;">Internal</td>
+      <td style="width: 149px;">1/1/17</td>
+      <td>Local</td>
+    </tr>
+    <tr>
+      <td> <a href="ViewApplicant_DEV.html">Steven Hargrove</a> </td>
+
+      <td>QA / Testing</td>
+      <td style="width: 149px;">Interview Complete</td>
+      <td style="width: 175px;">Internal</td>
+      <td style="width: 149px;">3/1/17</td>
+      <td>Local</td>
+
+    </tr>
+
+    <tr>
+      <td> <a href="ViewApplicant_DEV.html">Vihar
+Patel</a> </td>
+      <td>Web-Dev</td>
+
+      <td style="width: 149px;">Interview Complete</td>
+      <td style="width: 175px;">Internal</td>
+      <td style="width: 149px;">5/6/17</td>
+      <td>Local</td>
+    </tr>
+    <tr>
+      <td><a href="ViewApplicant_DEV.html">Jane Doe</a></td>
+
+      <td>Graphic Design</td>
+      <td style="width: 149px;">Wait and See</td>
+      <td style="width: 175px;">ML website</td>
+      <td style="width: 149px;">9/1/17</td>
+      <td>Hollywood, CA</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<br>
+
+<hr style="width: 100%; height: 2px;">
+<a href="AddApplicant.html"><input value="Add Applicant" type="button"></a>
+</body>
+</html>

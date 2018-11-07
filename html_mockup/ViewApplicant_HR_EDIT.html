@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <link rel="stylesheet" type="text/css" href="apptrack.css">
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>View Applicant</title>
+
+
+</head>
+
+
+<body>
+
+<div style="text-align: right;">
+<a href="login.html"><input value="Logout" type="button"></a></div>
+
+<div align="center">
+<h1>View Applicant (HR)
+</h1>
+
+</div>
+
+<div style="text-align: right;">
+<a href="FilterPage.html"><input value="Return" type="button"></a>&nbsp;<button type="button" onclick="alert('not yet implemented')">Edit</button>
+</div>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 162px;">Last Name:</td>
+
+      <td style="width: 227px;"><input name="lname" value="Doe" type="text"></td>
+
+      <td style="width: 211px;">Source:</td>
+
+      <td style="width: 284px;"><input name="applicant-source" value="Internal" type="text"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 162px;">First Name:</td>
+
+      <td style="width: 227px;"><input name="fname" value="John" type="text"></td>
+
+      <td style="width: 211px;">Location:</td>
+
+      <td style="width: 284px;"><input name="applicant-loc" value="Baltimore, MD" type="text"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 162px;">Position:</td>
+
+      <td style="width: 227px;"> <input name="job" value="PHP-Dev" type="text">
+      </td>
+
+      <td style="width: 211px;">Conveniant to Columbia:</td>
+
+      <td style="width: 284px;">
+      <select>
+      <option value="location-conveniant-yes">Yes</option>
+      <option value="location-conveniant-no">No</option>
+      <option value="location-conveniant-na">N/A</option>
+      </select>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>Availability:</td>
+
+      <td style="width: 227px;"><input name="applicant-loc" value="1 month" type="text"> </td>
+
+      <td style="width: 211px;">Phone Interview</td>
+
+      <td style="width: 284px;">
+      <select >
+      <option value="interview-status-complete">Completed</option>
+      <option value="interview-status-incomplete">Incomplete</option>
+      </select>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td></td>
+
+      <td>
+
+      </td>
+
+      <td style="width: 211px;">Personal Interview:</td>
+
+      <td style="width: 284px;">
+      <select>
+      <option value="phone-status-complete">Completed</option>
+      <option value="phone-status-incomplete">Incomplete</option>
+      </select>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>Willling to contract?</td>
+
+      <td>
+      <select name="contractor">
+      <option>Yes</option>
+      <option>No</option>
+      <option></option>
+      </select>
+
+      </td>
+
+      <td>Status:</td>
+
+	<td>
+	<select>
+	<option> Waiting for Input</option>
+	<option> Pending In Review</option>
+	<option> Schedule Phone Sreen</option>
+	<option> Phone Screen Complete, Schedule Interview</option>
+	<option> Interview Complete</option>
+	<option> Wait and See</option>
+	<option> Offer</option>
+	<option> Not in Consideration</option>
+	<option> Hired - Offer Accepted</option>
+	<option> Offer Rejected</option>
+	</select>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>Salary Requested:</td>
+
+      <td><input name="salary-req" > </td>
+
+      <td>Hourly Requested:</td>
+
+      <td><input name="salary-req" readonly="readonly">
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>Salary Offered</td>
+
+      <td><input name="salary_offered"></td>
+
+      <td>Hourly Offered:</td>
+
+      <td><input name="hourly_offered"></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<table style="text-align: left; width: 832px;" border="1" cellpadding="3" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 156px;">&nbsp; <a href="phoneQuest_dev.html">Phone Questions </a></td>
+
+      <td style="width: 158px;"><a href="none.html">Interview
+Questions</a><br>
+
+      </td>
+
+      <td style="width: 124px;"><a href="none.html">Assessment</a></td>
+      <td style="width: 170px;"><a href="none.html">Assessment
+Answer</a></td>
+
+      <td style="width: 170px;">&nbsp; <a href="resume.html">Resume / Portfolio</a></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+</body>
+</html>
